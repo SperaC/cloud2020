@@ -53,6 +53,7 @@ public class OrderController {
     }
     @GetMapping("/consumer/payment/lb")
     public String getPaymentLb(){
+
         List<ServiceInstance> instances = discoveryClient.getInstances("cloud-payment-service");
         if (instances==null || instances.size()<=0){
             return null;
@@ -60,5 +61,6 @@ public class OrderController {
         ServiceInstance instance = loadBalancer.instance(instances);
         URI uri = instance.getUri();
         return restTemplate.getForObject(uri+"/payment/lb",String.class);
+
     }
 }
