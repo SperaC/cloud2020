@@ -12,5 +12,7 @@ eureka:
 spring:
   application:
     name: cloud-provider-hystrix-order
-    eviction-interval-timer-in-ms: 5000
+feign:
+  hystrix:
+    enabled: true
 
